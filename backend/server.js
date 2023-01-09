@@ -131,9 +131,22 @@ const ActivitySchema = new mongoose.Schema({
 const Activity = mongoose.model("Activity", ActivitySchema);
 
 app.get("/activities", authenticateUser);
-app.get("/activities", async (req, res)=> {
-  res.status(200).json({success: true, response: "All the activities"});
+app.get("/activities", async (req, res) => {
+  const activities = await Activity.find({});
+  res.status(200).json({success: true, response: activities});
 });
+
+app.post("/activities", authenticateUser);
+app.post("/activities", async (req, res) => {
+  const { message } = req.body;
+  try {
+    const newActivity = await new Activity({message}).save();
+    res.status(201).json({success: true, response: newActivity});
+  } catch (error) {
+    res.status(400).json({success: false, response: error});
+  }
+});
+
 
 // Start the server
 app.listen(port, () => {
