@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import activities from "reducers/activities";
 import { API_URL } from "utils/utils";
 import { useNavigate, Link } from "react-router-dom";
+import user from "reducers/user";
 const Main = () => {
     const activityItems = useSelector((store) => store.activities.items);
     const dispatch = useDispatch();
@@ -38,7 +39,9 @@ const Main = () => {
 
     return (
         <>
-            <Link to="/login">GO TO LOGIN</Link>
+            <button>
+            <Link to="/login" onClick={dispatch(user.actions.setAccessToken(null))}>Log out</Link>
+            </button>
             <h2>This is the main component</h2>
             {activityItems.map((item) => {
                 return <p key={item._id}>{item.message}</p>
