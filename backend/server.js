@@ -8,7 +8,7 @@ const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
 
-// Defines the port the app will run on.
+// Defines the port the app will run on
 const port = process.env.PORT || 8080;
 const app = express();
 
@@ -57,8 +57,12 @@ app.post("/register", async (req, res) => {
       }).save();
       res.status(201).json({
         success: true,
-        response: {username: newUser.username, accessToken: newUser.accessToken, id: newUser._id}
-      })
+        response: {
+          username: newUser.username,
+          accessToken: newUser.accessToken,
+          id: newUser._id
+        }
+      });
     }
   } catch(error) {
     res.status(400).json({
@@ -93,7 +97,7 @@ app.post("/login", async (req, res) => {
   }
 })
 
-// Endpoint to authenticate the user
+// To authenticate the user
 const authenticateUser = async (req, res, next) => {
   const accessToken = req.header("Authorization");
   try{
@@ -113,7 +117,6 @@ const authenticateUser = async (req, res, next) => {
   }
 }
 
-// Endpoint to access the activity feed. Only reached by authenticated users.
 const ActivitySchema = new mongoose.Schema({
   message: {
     type: String,
@@ -130,6 +133,7 @@ const ActivitySchema = new mongoose.Schema({
 
 const Activity = mongoose.model("Activity", ActivitySchema);
 
+// Endpoint to access the activity feed. Only reached by authenticated users.
 app.get("/activities", authenticateUser);
 app.get("/activities", async (req, res) => {
   const activities = await Activity.find({});
@@ -147,8 +151,7 @@ app.post("/activities", async (req, res) => {
   }
 });
 
-
-// Start the server
+// To start the server
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });
