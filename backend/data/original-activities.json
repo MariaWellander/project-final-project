@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "message": "message1",
+        "hearts": 101,
+        "category": "quote1"
+    },
+    {
+        "id": 2,
+        "message": "message2",
+        "hearts": 202,
+        "category": "quote1"
+    },
+    {
+        "id": 3,
+        "message": "message3",
+        "hearts": 303,
+        "category": "quote1"
+    },
+    {
+        "id": 4,
+        "message": "message4",
+        "hearts": 404,
+        "category": "quote2"
+    },
+    {
+        "id": 5,
+        "message": "message5",
+        "hearts": 505,
+        "category": "quote2"
+    }
+  ]
