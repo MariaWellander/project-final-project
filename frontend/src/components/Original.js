@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import activities from "reducers/activities";
+import originals from "reducers/originals";
 import { API_URL } from "utils/utils";
 import { useNavigate, Link } from "react-router-dom";
 import user from "reducers/user";
-const Main = () => {
-    const activityItems = useSelector((store) => store.activities.items);
+const Original = () => {
+    const originalItems = useSelector((store) => store.originals.items);
     const dispatch = useDispatch();
     const accessToken = useSelector((store) => store.user.accessToken);
     const navigate = useNavigate();
 
     useEffect( () => {
         if (!accessToken) {
-            navigate("/login");
+            navigate("/original");
         }
     }, []);
     useEffect(() => {
@@ -24,31 +24,30 @@ const Main = () => {
                 "Authorization": accessToken
             }
         }
-        fetch(API_URL("activities"), options)
+        fetch(API_URL("originals"), options)
             .then(res => res.json())
             .then(data => {
                 if(data.success) {
-                    dispatch(activities.actions.setItems(data.response));
-                    dispatch(activities.actions.setError(null));
+                    dispatch(originals.actions.setItems(data.response));
+                    dispatch(originals.actions.setError(null));
                 } else {
-                    dispatch(activities.actions.setItems([]));
-                    dispatch(activities.actions.setError(data.response));
+                    dispatch(originals.actions.setItems([]));
+                    dispatch(originals.actions.setError(data.response));
                 }
             })
     }, []);
 
     return (
         <>
-            <Link to="/original">Go to the original activities</Link>
             <button>
             <Link to="/login" onClick={dispatch(user.actions.setAccessToken(null))}>Log out</Link>
             </button>
-            <h2>This is the Main component</h2>
-            {activityItems.map((item) => {
+            <h2>This is the Original component</h2>
+            {originalItems.map((item) => {
                 return <p key={item._id}>{item.message}</p>
             })}
         </>
     )
 }
 
-export default Main;
+export default Original;

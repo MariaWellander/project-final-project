@@ -3,6 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import crypto from 'crypto';
 import bcrypt from 'bcrypt';
+import originalData from "./data/original-activities.json";
 
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/final-project";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -35,6 +36,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema)
 
 // --- Routes start here ---
+
 // The main endpoint
 app.get("/", (req, res) => {
   res.send("Hello Welly user!");
@@ -111,12 +113,14 @@ const authenticateUser = async (req, res, next) => {
       })
     }
   } catch(error) {
-    res.status(400).json({ success: false,
+    res.status(400).json({
+      success: false,
       response: error
     })
   }
 }
 
+// Activity schema and model for activity content
 const ActivitySchema = new mongoose.Schema({
   message: {
     type: String,
@@ -137,7 +141,9 @@ const Activity = mongoose.model("Activity", ActivitySchema);
 app.get("/activities", authenticateUser);
 app.get("/activities", async (req, res) => {
   const activities = await Activity.find({});
-  res.status(200).json({success: true, response: activities});
+  res.status(200).json({
+    success: true,
+    response: activities});
 });
 
 app.post("/activities", authenticateUser);
@@ -145,9 +151,59 @@ app.post("/activities", async (req, res) => {
   const { message } = req.body;
   try {
     const newActivity = await new Activity({message}).save();
-    res.status(201).json({success: true, response: newActivity});
+    res.status(201).json({
+      success: true,
+      response: newActivity});
   } catch (error) {
-    res.status(400).json({success: false, response: error});
+    res.status(400).json({
+      success: false,
+      response: error});
+  }
+});
+
+// Model for original content: the activities that exists from start
+const Original = mongoose.model("Original", {
+  id: Number,
+  message: String,
+  createdAt: String,
+  hearts: Number,
+  category: String
+});
+
+// Resetting DataBase on demand
+if (process.env.RESET_DB) {
+  console.log("Resetting database!");
+
+  const resetDataBase = async () => {
+    await Original.deleteMany({});
+    originalData.forEach((singleOriginal) => {
+      const newOriginal = new Original(singleOriginal);
+      newOriginal.save();
+    });
+  };
+  resetDataBase();
+}
+
+// --- Routes start here ---
+
+// Endpoint to access the original activity content. Only reached by authenticated users.
+app.get("/originals", authenticateUser);
+app.get("/originals", async (req, res) => {
+  try {
+    const originals = await Original.find({});
+    if (originals) {
+      res.status(200).json({
+        success: true,
+        body: originals
+      });
+    }
+  } catch (error) {
+    res.status(400).json({
+      body: {
+        success: false,
+        response: "bad request",
+      }
+    });
   }
 });
 
