@@ -39,9 +39,11 @@ const Main = () => {
 
     return (
         <>
-            <Link to="/original">Go to the original activities</Link>
             <button>
-            <Link to="/login" onClick={dispatch(user.actions.setAccessToken(null))}>Log out</Link>
+            <Link to="/original">Go to the original activities</Link>
+            </button>
+            <button>
+            <Link to="/login" onClick={() => dispatch(user.actions.setAccessToken(null))}>Log out</Link>
             </button>
             <h2>This is the Main component</h2>
             {activityItems.map((item) => {

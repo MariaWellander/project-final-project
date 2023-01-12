@@ -27,6 +27,7 @@ const Original = () => {
         fetch(API_URL("originals"), options)
             .then(res => res.json())
             .then(data => {
+                console.log(accessToken)
                 if(data.success) {
                     dispatch(originals.actions.setItems(data.response));
                     dispatch(originals.actions.setError(null));
@@ -40,7 +41,7 @@ const Original = () => {
     return (
         <>
             <button>
-            <Link to="/login" onClick={dispatch(user.actions.setAccessToken(null))}>Log out</Link>
+            <Link to="/login" onClick={() => dispatch(user.actions.setAccessToken(null))}>Log out</Link>
             </button>
             <h2>This is the Original component</h2>
             {originalItems.map((item) => {

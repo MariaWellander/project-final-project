@@ -11,7 +11,7 @@ Describe how you approached to problem, and what tools and techniques you used t
 ## View it live
 
 Frontend:
-https://welly-app.netlify.app/login
+https://welly-app.netlify.app/
 
 Backend:
 https://final-project-blaj4x4mpa-lz.a.run.app

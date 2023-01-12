@@ -101,6 +101,7 @@ app.post("/login", async (req, res) => {
 
 // To authenticate the user
 const authenticateUser = async (req, res, next) => {
+  console.log("hej")
   const accessToken = req.header("Authorization");
   try{
     const user = await User.findOne({accessToken: accessToken});
@@ -194,7 +195,7 @@ app.get("/originals", async (req, res) => {
     if (originals) {
       res.status(200).json({
         success: true,
-        body: originals
+        response: originals
       });
     }
   } catch (error) {
