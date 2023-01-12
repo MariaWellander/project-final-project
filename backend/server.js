@@ -39,7 +39,7 @@ const User = mongoose.model('User', userSchema)
 
 // The main endpoint
 app.get("/", (req, res) => {
-  res.send("Hello Welly user!");
+  res.send("Hello Welly user! This is the backend built for: https://welly-app.netlify.app/");
 });
 
 // Endpoint to register
@@ -125,6 +125,9 @@ const authenticateUser = async (req, res, next) => {
 const ActivitySchema = new mongoose.Schema({
   message: {
     type: String,
+    required: true,
+    minlength:1,
+    trim: true
   },
   createdAt: {
     type: Date,
@@ -141,7 +144,7 @@ const Activity = mongoose.model("Activity", ActivitySchema);
 // Endpoint to access the activity feed. Only reached by authenticated users.
 app.get("/activities", authenticateUser);
 app.get("/activities", async (req, res) => {
-  const activities = await Activity.find({});
+  const activities = await Activity.find().sort({createdAt: 'desc'}).limit(30).exec();
   res.status(200).json({
     success: true,
     response: activities});

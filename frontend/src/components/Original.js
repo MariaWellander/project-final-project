@@ -12,7 +12,7 @@ const Original = () => {
 
     useEffect( () => {
         if (!accessToken) {
-            navigate("/original");
+            navigate("/login");
         }
     }, []);
     useEffect(() => {
@@ -41,11 +41,14 @@ const Original = () => {
     return (
         <>
             <button>
+            <Link to="/">Go to the Activity feed</Link>
+            </button>
+            <button>
             <Link to="/login" onClick={() => dispatch(user.actions.setAccessToken(null))}>Log out</Link>
             </button>
             <h2>This is the Original component</h2>
             {originalItems.map((item) => {
-                return <p key={item._id}>{item.message}</p>
+                return <section key={item._id}>{item.message}</section>
             })}
         </>
     )

@@ -1,68 +1,89 @@
 [
     {
         "id": 1,
-        "message": "message1",
+        "message": "Take 3 deep breaths 💨",
         "createdAt": "2023-01-01",
         "hearts": 101,
-        "category": "quote1"
+        "category": "Physical"
     },
     {
         "id": 2,
-        "message": "message2",
+        "message": "Get some daylight today 🌞",
         "createdAt": "2023-01-01",
         "hearts": 202,
-        "category": "quote1"
+        "category": "Mental"
     },
     {
         "id": 3,
-        "message": "message3",
+        "message": "Call/text/meet one person that's dear to you ☎",
         "createdAt": "2023-01-01",
         "hearts": 303,
-        "category": "quote1"
+        "category": "Physical"
     }, 
     {
         "id": 4,
-        "message": "message4",
+        "message": "Say one <no> today 🛑",
         "createdAt": "2023-01-01",
         "hearts": 404,
-        "category": "quote2"
+        "category": "Physical"
     },
     {
         "id": 5,
-        "message": "message5",
+        "message": "Give yourself credit for how far you've come 🙌",
         "createdAt": "2023-01-01",
         "hearts": 505,
-        "category": "quote2"
+        "category": "Mental"
     },{
         "id": 6,
-        "message": "message6",
+        "message": "Take a walk around the block 🚶‍♂️",
         "createdAt": "2022-01-01",
         "hearts": 606,
-        "category": "quote2"
+        "category": "Physical"
     },{
         "id": 7,
-        "message": "message7",
+        "message": "Out loud, give yourself one loving and accepting compliment 💌",
         "createdAt": "2022-01-01",
         "hearts": 707,
-        "category": "quote3"
+        "category": "Mental"
     },{
         "id": 8,
-        "message": "message8",
+        "message": "Ventilate a room in your home the get some fresh air 🏡",
         "createdAt": "2022-01-01",
         "hearts": 808,
-        "category": "quote3"
+        "category": "Physical"
     },{
         "id": 9,
-        "message": "message9",
+        "message": "Be kind and gentle to yourself 💖",
         "createdAt": "2022-01-01",
         "hearts": 909,
-        "category": "quote3"
+        "category": "Mental"
     },
     {
         "id": 10,
-        "message": "message10",
+        "message": "Use <want to> instead of <need to> 💬",
         "createdAt": "2022-01-01",
         "hearts": 1010,
-        "category": "quote3"
+        "category": "Mental"
+    },
+    {
+        "id": 11,
+        "message": "Stand infront of a mirror and look at yourself for 10 seconds 👁",
+        "createdAt": "2022-01-01",
+        "hearts": 1111,
+        "category": "Physical"
+    },
+    {
+        "id": 12,
+        "message": "Give yourself a hug 🤗",
+        "createdAt": "2021-01-01",
+        "hearts": 1212,
+        "category": "Physical"
+    },
+    {
+        "id": 13,
+        "message": "Give yourself a decent (ex. 8) hours of sleep tonight 💤",
+        "createdAt": "2021-01-01",
+        "hearts": 1313,
+        "category": "Physical"
     }
   ]

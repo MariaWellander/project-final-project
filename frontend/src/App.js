@@ -19,7 +19,8 @@ const reducer = combineReducers({
 const store = configureStore({reducer});
 export const App = () => {
   return (
-    <Provider store={store}>
+    
+     <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route path='/login' element={<Login/>}></Route>
@@ -29,6 +30,5 @@ export const App = () => {
         </Routes>
       </BrowserRouter>
     </Provider>
-    
   );
 }
