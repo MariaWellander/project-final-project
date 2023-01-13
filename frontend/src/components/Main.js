@@ -73,13 +73,12 @@ const Main = () => {
         <>
             <form onSubmit={onFormSubmit}>
             <h3>
-            {`
             How do you boost your well-being?
+            <br />
             Share it with the Welly community!
-            `}
             </h3>
             <input type="text" name="textArea" onChange={handleFormChange} value={formData.textArea || ''} placeholder="Type your secret here..." />
-            <button type="submit">💙 Send your secret! 💙</button>
+            <button type="submit">Send secret!</button>
             </form>
             <button>
             <Link to="/original">Go to the original activities</Link>
@@ -87,7 +86,6 @@ const Main = () => {
             <button>
             <Link to="/login" onClick={() => dispatch(user.actions.setAccessToken(null))}>Log out</Link>
             </button>
-            <h2>This is the Main component</h2>
             {activityItems.map((item) => {
                 return <section key={item._id}>{item.message}</section>
             })}

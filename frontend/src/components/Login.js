@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector, batch } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { API_URL } from 'utils/utils';
 import user from 'reducers/user';
 
@@ -49,6 +49,7 @@ const Login = () => {
     }
     return (
         <>
+        <h1>Welly</h1>
         <label htmlFor="register">Register</label>
         <input type="radio" id="register" checked={mode === "register"} onChange={() =>setMode("register")}/>
         <label htmlFor="login">Login</label>

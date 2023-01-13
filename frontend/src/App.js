@@ -9,6 +9,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import activities from 'reducers/activities';
 import user from 'reducers/user';
 import originals from 'reducers/originals';
+import { GlobalStyles } from 'components/GlobalStyles';
 
 
 const reducer = combineReducers({
@@ -19,8 +20,9 @@ const reducer = combineReducers({
 const store = configureStore({reducer});
 export const App = () => {
   return (
-    
-     <Provider store={store}>
+    <>
+    <GlobalStyles />
+    <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route path='/login' element={<Login/>}></Route>
@@ -30,5 +32,6 @@ export const App = () => {
         </Routes>
       </BrowserRouter>
     </Provider>
+    </>
   );
 }
