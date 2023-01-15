@@ -29,7 +29,6 @@ const Login = () => {
         fetch(API_URL(mode), options)
             .then(response => response.json())
             .then(data => {
-                console.log(data)
                 if(data.success) {
                     batch(() => {
                         dispatch(user.actions.setUsername(data.response.username));

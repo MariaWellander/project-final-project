@@ -27,7 +27,6 @@ const Original = () => {
         fetch(API_URL("originals"), options)
             .then(res => res.json())
             .then(data => {
-                console.log(accessToken)
                 if(data.success) {
                     dispatch(originals.actions.setItems(data.response));
                     dispatch(originals.actions.setError(null));

@@ -39,35 +39,35 @@ const Main = () => {
             })
     }, []);
 
-    const handleFormChange = (e) => {
-        const { name, value } = e.target;
+    const handleFormChange = (event) => {
+        const { name, value } = event.target;
         setFormData(prevData => ({
             ...prevData,
             [name]: value
         }));
     }
 
-    const onFormSubmit = (e) => {
-        e.preventDefault();
+    const onFormSubmit = (event) => {
+        event.preventDefault();
         const options = {
-        method: "POST",
-        headers: {
-        "Content-Type": "application/json",
-        "Authorization": accessToken
-        },
-        body: JSON.stringify({ message: formData.textArea })
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": accessToken
+            },
+            body: JSON.stringify({ message: formData.textArea })
         }
         fetch(API_URL("activities"), options)
-        .then(res => res.json())
-        .then(data => {
-        if(data.success) {
-        dispatch(activities.actions.addItem(data.response));
-        } else {
-        console.log(data.response);
-        }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if(data.success) {
+                    dispatch(activities.actions.addItem(data.response));
+                } else {
+                    console.log(data.response);
+                }
+            })
         setFormData({});
-        }        
+    }        
 
     return (
         <>
