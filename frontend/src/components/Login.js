@@ -3,6 +3,8 @@ import { useDispatch, useSelector, batch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from 'utils/utils';
 import user from 'reducers/user';
+import { Button, Img, Input, Label, Form, RadioButton, RadioLabel } from './GlobalStyles';
+import logo from 'images/logo.png';
 
 const Login = () => {
     const [username, setUsername] = useState("");
@@ -48,26 +50,38 @@ const Login = () => {
     }
     return (
         <>
+        <header>
+            <Img src={logo} alt="logo" />
+        </header>
         <h1>Welly</h1>
-        <label htmlFor="register">Register</label>
-        <input type="radio" id="register" checked={mode === "register"} onChange={() =>setMode("register")}/>
-        <label htmlFor="login">Login</label>
-        <input type="radio" id="login" checked={mode === "login"} onChange={() =>setMode("login")}/>
-        <form onSubmit={onFormSubmit}>
-            <label htmlFor="username">Username</label>
-            <input
+        <h2>- boost your well-being!</h2>
+        <RadioLabel htmlFor="register">Register</RadioLabel>
+        <RadioButton
+            type="radio"
+            id="register"
+            checked={mode === "register"}
+            onChange={() =>setMode("register")}/>
+        <RadioLabel htmlFor="login">Login</RadioLabel>
+        <RadioButton
+            type="radio"
+            id="login"
+            checked={mode === "login"}
+            onChange={() =>setMode("login")}/>
+        <Form onSubmit={onFormSubmit}>
+            <Label htmlFor="username">Username:</Label>
+            <Input
                 type="text"
                 id="username"
                 value={username}
                 onChange={e => setUsername(e.target.value)}/>
-            <label htmlFor="password">Password</label>
-            <input
+            <Label htmlFor="password">Password:</Label>
+            <Input
                 type="password"
                 id="password"
                 value={password}
                 onChange={e => setPassword(e.target.value)}/>
-            <button type="submit">Submit</button>
-        </form>
+            <Button type="submit">Submit</Button>
+        </Form>
     </>
     );
 }

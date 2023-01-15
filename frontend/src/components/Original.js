@@ -4,6 +4,9 @@ import originals from "reducers/originals";
 import { API_URL } from "utils/utils";
 import { useNavigate, Link } from "react-router-dom";
 import user from "reducers/user";
+import { Button, Img } from "./GlobalStyles";
+import logo from 'images/logo.png';
+
 const Original = () => {
     const originalItems = useSelector((store) => store.originals.items);
     const dispatch = useDispatch();
@@ -39,13 +42,20 @@ const Original = () => {
 
     return (
         <>
-            <button>
-            <Link to="/">Go to the Activity feed</Link>
-            </button>
-            <button>
-            <Link to="/login" onClick={() => dispatch(user.actions.setAccessToken(null))}>Log out</Link>
-            </button>
-            <h2>This is the Original component</h2>
+            <header>
+                <Img src={logo} alt="logo" />
+                <Button>
+                <Link to="/">Activity feed</Link>
+                </Button>
+                <Button>
+                <Link to="/login" onClick={() => dispatch(user.actions.setAccessToken(null))}>Log out</Link>
+                </Button>
+            </header>
+            <h2>
+                This is Welly's boosting activities
+                <br />
+                - try them out!
+            </h2>
             {originalItems.map((item) => {
                 return <section key={item._id}>{item.message}</section>
             })}

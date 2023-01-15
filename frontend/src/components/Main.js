@@ -4,6 +4,8 @@ import activities from "reducers/activities";
 import user from "reducers/user";
 import { API_URL } from "utils/utils";
 import { useNavigate, Link } from "react-router-dom";
+import { Button, Img, Input } from "./GlobalStyles";
+import logo from 'images/logo.png';
 
 const Main = () => {
     const [formData, setFormData] = useState({});
@@ -84,6 +86,15 @@ const Main = () => {
 
     return (
         <>
+            <header>
+                <Img src={logo} alt="logo" />
+                <Button>
+                <Link to="/original">Welly's activities</Link>
+                </Button>
+                <Button>
+                <Link to="/login" onClick={() => dispatch(user.actions.setAccessToken(null))}>Log out</Link>
+                </Button>
+            </header>
             <form onSubmit={onFormSubmit}>
             <h2>Well hello, {username}!</h2>
             <h3>
@@ -91,15 +102,9 @@ const Main = () => {
             <br />
             Share it with the Welly community!
             </h3>
-            <input type="text" name="textArea" onChange={handleFormChange} value={formData.textArea || ''} placeholder="Type your secret here..." />
-            <button type="submit">Send secret!</button>
+            <Input type="text" name="textArea" onChange={handleFormChange} value={formData.textArea || ''} placeholder="Type your secret here..." />
+            <Button type="submit">Send secret!</Button>
             </form>
-            <button>
-            <Link to="/original">Go to the original activities</Link>
-            </button>
-            <button>
-            <Link to="/login" onClick={() => dispatch(user.actions.setAccessToken(null))}>Log out</Link>
-            </button>
             {activityItems.map((item) => {
                 return <section key={item._id}>{item.message}</section>
             })}

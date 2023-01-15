@@ -1,11 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button, Img } from './GlobalStyles';
+import logo from 'images/logo.png';
 
 const NotFound = () => {
     return (
     <>
-        <Link to="/login">GO TO LOGIN</Link>
-        <h1>Not Found...</h1>
+        <header>
+            <Img src={logo} alt="logo" />
+            <Button>
+            <Link to="/login">Go to Login</Link>
+            </Button>
+        </header>
+        <h2>Not Found...</h2>
     </>
     )
 }
