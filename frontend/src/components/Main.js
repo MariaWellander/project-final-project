@@ -7,10 +7,12 @@ import { useNavigate, Link } from "react-router-dom";
 
 const Main = () => {
     const [formData, setFormData] = useState({});
+    const [updated, setUpdated] = useState(false);
     const activityItems = useSelector((store) => store.activities.items);
     const dispatch = useDispatch();
     const accessToken = useSelector((store) => store.user.accessToken);
     const navigate = useNavigate();
+    const username = useSelector((store) => store.user.username);
 
     useEffect( () => {
         if (!accessToken) {
@@ -19,6 +21,7 @@ const Main = () => {
     }, []);
 
     useEffect(() => {
+        
         const options = {
             method: "GET",
             headers: {
@@ -38,6 +41,13 @@ const Main = () => {
                 }
             })
     }, []);
+
+    useEffect(() => {
+        if (updated) {
+            // Code to fetch the new data here
+            setUpdated(false);
+        }
+    }, [updated])    
 
     const handleFormChange = (event) => {
         const { name, value } = event.target;
@@ -61,7 +71,10 @@ const Main = () => {
             .then(res => res.json())
             .then(data => {
                 if(data.success) {
-                    dispatch(activities.actions.addItem(data.response));
+                    /*dispatch(activities.actions.addItem(data.response));*/
+                    const newActivityItems = [...activityItems, data.response];
+                    dispatch(activities.actions.setItems(newActivityItems));
+                    setUpdated(true);
                 } else {
                     console.log(data.response);
                 }
@@ -72,6 +85,7 @@ const Main = () => {
     return (
         <>
             <form onSubmit={onFormSubmit}>
+            <h2>Well hello, {username}!</h2>
             <h3>
             How do you boost your well-being?
             <br />
