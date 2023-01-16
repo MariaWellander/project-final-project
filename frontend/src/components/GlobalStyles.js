@@ -84,6 +84,20 @@ export const GlobalStyles = createGlobalStyle`
         min-height: 100px;
         line-height: 1.7;
     }
+
+    @media (min-width: 668px) and (max-width: 1023px) {
+      section {
+            margin-right: 100px;
+            margin-left: 100px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+      section {
+            margin-right: 200px;
+            margin-left: 200px;
+        }
+    }
 `;
 
 export const LoginHeader = styled.header.attrs({ className: "login-header" })`
@@ -113,9 +127,13 @@ export const LoginHeader = styled.header.attrs({ className: "login-header" })`
 
 export const LoginH2 = styled.h2.attrs({ className: "login-h2" })`
   flex: wrap;
-  font-size: 35px;
+  font-size: 2em;
   padding: 20px 0px 10px 0px;
   margin: 5px 10px 20px 5px;
+
+  @media (min-width: 668px) {
+    font-size: 45px;
+  }
 `;
 
 export const MainH2 = styled.h2.attrs({ className: "main-h2" })`
@@ -123,6 +141,10 @@ export const MainH2 = styled.h2.attrs({ className: "main-h2" })`
   font-size: 35px;
   padding: 20px 0px 10px 0px;
   margin: 5px 10px 20px 5px;
+
+  @media (min-width: 668px) {
+    font-size: 50px;
+  }
 `;
 
 export const Button = styled.button`
@@ -222,6 +244,16 @@ export const MainInput = styled.input.attrs({ className: "main-input" })`
     outline: none;
     box-shadow: 0px 0px 10px rgba(248, 233, 71, 0.7);
   }
+
+  @media (min-width: 668px) and (max-width: 1023px) {
+      margin-right: 20px;
+      margin-left: 100px;
+  }
+
+  @media (min-width: 1024px) {
+      margin-right: 20px;
+      margin-left: 200px;
+  }
 `
 
 export const Label = styled.label`
@@ -235,7 +267,10 @@ export const Label = styled.label`
 `;
 
 export const Form = styled.form`
-  width: 70%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 0 auto;
   margin-top: 20px;
   padding: 20px;
