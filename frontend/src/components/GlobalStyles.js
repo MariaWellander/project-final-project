@@ -27,7 +27,7 @@ export const GlobalStyles = createGlobalStyle`
     h2 {
         color: #00A6A6;
         font-family: 'Sniglet', cursive;
-        font-size: 30px;
+        font-size: 35px;
         text-shadow: 1.5px 1.5px #005353;
         letter-spacing: 2px;
         word-spacing: 4px;
@@ -35,8 +35,8 @@ export const GlobalStyles = createGlobalStyle`
         align-content: center;
         align-items: center;
         justify-content: center;
-        margin: 27px 20px 20px 20px;
-        padding: 20px 20px 20px 20px;
+        margin: 27px 14px 20px 14px;
+        padding: 20px 15px 20px 15px;
     }
 
     h3 {
@@ -72,10 +72,10 @@ export const GlobalStyles = createGlobalStyle`
         font-weight: bold;
         flex-wrap: wrap;
         border: 2px solid #00A6A6;
-        padding: 20px;
+        padding: 10px;
         border-radius: 10px;
         box-shadow: 0px 0px 10px 0px #ccc;
-        margin: 15px 25px 15px 10px;
+        margin: 15px 35px 15px 25px;
         min-height: 150px;
         align-content: center;
         align-items: center;
@@ -84,6 +84,45 @@ export const GlobalStyles = createGlobalStyle`
         min-height: 100px;
         line-height: 1.7;
     }
+`;
+
+export const LoginHeader = styled.header.attrs({ className: "login-header" })`
+  background-color: #005353;
+  border-bottom: 3px solid #00A6A6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px 20px 20px;
+  position: relative;
+
+  h1 {
+    color: #00A6A6;
+    font-family: 'Sniglet', cursive;
+    text-shadow: 2px 2px #F9F7B8;
+    letter-spacing: 3px;
+    margin-top: 30px;
+    font-size: 3.5em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-top: 0px;
+  }
+`;
+
+export const LoginH2 = styled.h2.attrs({ className: "login-h2" })`
+  flex: wrap;
+  font-size: 35px;
+  padding: 20px 0px 10px 0px;
+  margin: 5px 10px 20px 5px;
+`;
+
+export const MainH2 = styled.h2.attrs({ className: "main-h2" })`
+  flex: wrap;
+  font-size: 35px;
+  padding: 20px 0px 10px 0px;
+  margin: 5px 10px 20px 5px;
 `;
 
 export const Button = styled.button`
@@ -114,8 +153,7 @@ export const RadioButton = styled.input`
     height: 15px;
     border-radius: 50%;
     border: 1px solid #005353;
-    margin-right: 100px;
-    margin-top: 20px;
+    margin-bottom: 15px;
 
     &:checked {
     background-color: rgb(31, 193, 27);
@@ -127,18 +165,17 @@ export const RadioButton = styled.input`
 `;
 
 export const RadioLabel = styled.label`
-  font-size: 16px;
+  font-size: 22px;
   color: #005353;
-  margin-right: 20px;
-  margin-bottom: 10px;
   cursor: pointer;
+  margin-bottom: 10px;
 `;
 
-export const RadioGroup = styled.div`
+export const RadioContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
+  flex-direction: column;
+  align-items: center;
+`
 
 export const Img = styled.img`
     width: 60px;
@@ -166,6 +203,27 @@ export const Input = styled.input`
   }
 `;
 
+export const MainInput = styled.input.attrs({ className: "main-input" })`
+  color: #005353;
+  background-color: #f1f1f1;
+  padding: 12px 20px;
+  border: 2.3px solid #005353;
+  border-radius: 4px;
+  font-size: 16px;
+  box-shadow: 0px 0px 4px rgba(0, 83, 83, 0.1);
+  transition: all 0.2s ease-in-out;
+  max-width: 100%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-left: 25px;
+
+  &:focus {
+    border-color: rgba(248, 233, 71);
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(248, 233, 71, 0.7);
+  }
+`
+
 export const Label = styled.label`
   font-size: 18px;
   font-weight: bold;
@@ -179,7 +237,7 @@ export const Label = styled.label`
 export const Form = styled.form`
   width: 70%;
   margin: 0 auto;
-  margin-top: 80px;
+  margin-top: 20px;
   padding: 20px;
   padding-top: 40px;
   background-color: #f1f1f1;

@@ -52,9 +52,7 @@ const Original = () => {
                 </Button>
             </header>
             <h2>
-                This is Welly's boosting activities
-                <br />
-                - try them out!
+                Try Welly's activities!
             </h2>
             {originalItems.map((item) => {
                 return <section key={item._id}>{item.message}</section>

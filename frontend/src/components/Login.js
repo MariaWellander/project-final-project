@@ -3,7 +3,7 @@ import { useDispatch, useSelector, batch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from 'utils/utils';
 import user from 'reducers/user';
-import { Button, Img, Input, Label, Form, RadioButton, RadioLabel } from './GlobalStyles';
+import { Button, Img, Input, Label, LoginHeader, LoginH2, Form, RadioButton, RadioLabel, RadioContainer } from './GlobalStyles';
 import logo from 'images/logo.png';
 
 const Login = () => {
@@ -50,23 +50,25 @@ const Login = () => {
     }
     return (
         <>
-        <header>
+        <LoginHeader>
             <Img src={logo} alt="logo" />
-        </header>
-        <h1>Welly</h1>
-        <h2>- boost your well-being!</h2>
-        <RadioLabel htmlFor="register">Register</RadioLabel>
-        <RadioButton
+            <h1>Welly</h1>
+        </LoginHeader>
+        <LoginH2>Boost your well-being!</LoginH2>
+        <RadioContainer>
+            <RadioLabel htmlFor="register">Register</RadioLabel>
+            <RadioButton
             type="radio"
             id="register"
             checked={mode === "register"}
             onChange={() =>setMode("register")}/>
-        <RadioLabel htmlFor="login">Login</RadioLabel>
-        <RadioButton
+            <RadioLabel htmlFor="login">Login</RadioLabel>
+            <RadioButton
             type="radio"
             id="login"
             checked={mode === "login"}
             onChange={() =>setMode("login")}/>
+        </RadioContainer>
         <Form onSubmit={onFormSubmit}>
             <Label htmlFor="username">Username:</Label>
             <Input

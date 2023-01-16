@@ -4,7 +4,7 @@ import activities from "reducers/activities";
 import user from "reducers/user";
 import { API_URL } from "utils/utils";
 import { useNavigate, Link } from "react-router-dom";
-import { Button, Img, Input } from "./GlobalStyles";
+import { Button, Img, MainInput, MainH2 } from "./GlobalStyles";
 import logo from 'images/logo.png';
 
 const Main = () => {
@@ -46,7 +46,6 @@ const Main = () => {
 
     useEffect(() => {
         if (updated) {
-            // Code to fetch the new data here
             setUpdated(false);
         }
     }, [updated])    
@@ -73,7 +72,6 @@ const Main = () => {
             .then(res => res.json())
             .then(data => {
                 if(data.success) {
-                    /*dispatch(activities.actions.addItem(data.response));*/
                     const newActivityItems = [...activityItems, data.response];
                     dispatch(activities.actions.setItems(newActivityItems));
                     setUpdated(true);
@@ -96,14 +94,14 @@ const Main = () => {
                 </Button>
             </header>
             <form onSubmit={onFormSubmit}>
-            <h2>Well hello, {username}!</h2>
+            <MainH2>Well hello, {username}!</MainH2>
             <h3>
             How do you boost your well-being?
             <br />
             Share it with the Welly community!
             </h3>
-            <Input type="text" name="textArea" onChange={handleFormChange} value={formData.textArea || ''} placeholder="Type your secret here..." />
-            <Button type="submit">Send secret!</Button>
+            <MainInput type="text" name="textArea" onChange={handleFormChange} value={formData.textArea || ''} placeholder="Type your activity here..." />
+            <Button type="submit">Share it!</Button>
             </form>
             {activityItems.map((item) => {
                 return <section key={item._id}>{item.message}</section>
