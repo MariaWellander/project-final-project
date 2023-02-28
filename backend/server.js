@@ -133,6 +133,7 @@ const ActivitySchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength:1,
+    maxlength:150,
     trim: true
   },
   createdAt: {
@@ -152,7 +153,7 @@ const Activity = mongoose.model("Activity", ActivitySchema);
 app.get("/activities", authenticateUser);
 app.get("/activities", async (req, res) => {
   try {
-  const activities = await Activity.find().sort({createdAt: -1}).limit(30).exec();
+  const activities = await Activity.find().sort({createdAt: -1}).limit(25).exec();
     if (activities) {
       res.status(200).json({
         success: true,
