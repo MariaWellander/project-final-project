@@ -38,7 +38,6 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema)
 
 // --- Routes start here ---
-
 // The main endpoint
 
 app.get("/", (req, res) => {
@@ -153,7 +152,7 @@ const Activity = mongoose.model("Activity", ActivitySchema);
 app.get("/activities", authenticateUser);
 app.get("/activities", async (req, res) => {
   try {
-  const activities = await Activity.find().sort({createdAt: -1}).limit(25).exec();
+  const activities = await Activity.find().sort({createdAt: desc}).limit(25).exec();
     if (activities) {
       res.status(200).json({
         success: true,
