@@ -2,7 +2,7 @@
 
 This is Maria Wellander's final project for Technigo's web development boot camp, autumn 2022.
 
-The task was to creat a three weeks half-time website/app that required; frontend in React (Redux optional), backend in Node.js, MongoDB database, navigation using React Router, should work in Chrome, Firefox & Safari & be responsive and work well on mobile, tablet and desktop.
+The task was to create a three weeks half-time website/app that required; frontend in React (Redux optional), backend in Node.js, MongoDB database, navigation using React Router, should work in Chrome, Firefox & Safari & be responsive and work well on mobile, tablet and desktop.
 
 I came up with the idea to create an app that boosts the user's well-being, called Welly. By signing up they're getting access to Welly's boosting activities. They can also access the other users' activities that they've shared in the Welly community feed. So, every user can post their own activity in that feed, for others to view it.
 
