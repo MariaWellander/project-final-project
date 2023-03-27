@@ -4,7 +4,7 @@ import activities from "reducers/activities";
 import user from "reducers/user";
 import { API_URL } from "utils/utils";
 import { useNavigate, Link } from "react-router-dom";
-import { Button, Img, MainInput, MainH2 } from "./GlobalStyles";
+import { Button, Img, MainInput, MainH2, MainSection } from "./GlobalStyles";
 import logo from 'images/logo.png';
 
 const Main = () => {
@@ -104,7 +104,7 @@ const Main = () => {
             <Button type="submit">Share it!</Button>
             </form>
             {activityItems.map((item) => {
-                return <section key={item._id}>{item.message}</section>
+                return <MainSection key={item._id}>{item.message}</MainSection>
             })}
         </>
     )

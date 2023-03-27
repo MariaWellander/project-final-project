@@ -82,9 +82,7 @@ export const GlobalStyles = createGlobalStyle`
         justify-content: center;
         height: 100px;
         min-height: 100px;
-        max-height: 300px;
         line-height: 1.7;
-        word-wrap: break-word;
     }
 
     @media (min-width: 668px) and (max-width: 1023px) {
@@ -100,6 +98,11 @@ export const GlobalStyles = createGlobalStyle`
             margin-left: 200px;
         }
     }
+`;
+
+export const MainSection = styled.section.attrs({ className: "main-section" })`
+  max-height: 300px;
+  word-wrap: break-word;
 `;
 
 export const LoginHeader = styled.header.attrs({ className: "login-header" })`
