@@ -82,7 +82,9 @@ export const GlobalStyles = createGlobalStyle`
         justify-content: center;
         height: 100px;
         min-height: 100px;
+        max-height: 300px;
         line-height: 1.7;
+        word-wrap: break-word;
     }
 
     @media (min-width: 668px) and (max-width: 1023px) {
